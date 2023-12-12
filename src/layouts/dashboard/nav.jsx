@@ -13,7 +13,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import { usePathname } from 'src/routes/hooks';
 import { RouterLink } from 'src/routes/components';
 
-import { useResponsive } from 'src/hooks/use-responsive';
+// import { useResponsive } from 'src/hooks/use-responsive';
 
 import { account } from 'src/_mock/account';
 
@@ -29,7 +29,7 @@ export default function Nav({ openNav, onCloseNav }) {
   const { accounts } = useMsal();
   const pathname = usePathname();
 
-  const upLg = useResponsive('up', 'lg');
+  // const upLg = useResponsive('up', 'lg');
 
   useEffect(() => {
     if (openNav) {
@@ -95,11 +95,12 @@ export default function Nav({ openNav, onCloseNav }) {
   return (
     <Box
       sx={{
+        flexGrow: 1,
         flexShrink: { lg: 0 },
         width: { lg: NAV.WIDTH },
       }}
     >
-      {upLg ? (
+      {/* {upLg ? (
         <Box
           sx={{
             height: 1,
@@ -110,19 +111,19 @@ export default function Nav({ openNav, onCloseNav }) {
         >
           {renderContent}
         </Box>
-      ) : (
-        <Drawer
-          open={openNav}
-          onClose={onCloseNav}
-          PaperProps={{
-            sx: {
-              width: NAV.WIDTH,
-            },
-          }}
-        >
-          {renderContent}
-        </Drawer>
-      )}
+      ) : ( */}
+      <Drawer
+        open={openNav}
+        onClose={onCloseNav}
+        PaperProps={{
+          sx: {
+            width: NAV.WIDTH,
+          },
+        }}
+      >
+        {renderContent}
+      </Drawer>
+      {/* )} */}
     </Box>
   );
 }
